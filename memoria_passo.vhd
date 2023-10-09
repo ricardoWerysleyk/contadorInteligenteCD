@@ -34,14 +34,7 @@ architecture logica of memoria_passo is
 		M0: mux_4_bits port map (saida_registrador0, A0, selection, saida_mux0);
 		U0: registrador_4_bits port map(ck, clr, set, saida_mux0, saida_registrador0);
 		-- lógica da memória, usando o mux para seleção
-		process(load, step)
-			begin
-				if load = '1' and step = '1' then
-				  selection <= '1';
-				else
-				  selection <= '0';
-				end if;
-		end process;
+		selection <= load and step
 	 -- passando as saídas do registrador para a saída da entidade.
 	 Q0 <= saida_registrador0;
 end logica;
