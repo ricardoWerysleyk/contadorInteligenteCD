@@ -38,14 +38,7 @@ architecture logica of memoria_max_min is
 		U1: registrador_4_bits port map(ck, clr, set, saida_mux1, saida_registrador1);
 		U0: registrador_4_bits port map(ck, clr, set, saida_mux0, saida_registrador0);
 		-- lógica da memória, usando o mux para seleção
-		process(load, max_min)
-			begin
-				if load = '1' and max_min = '1' then
-				  selection <= '1';
-				else
-				  selection <= '0';
-				end if;
-		end process;
+		selection <= load and max_min;
 	 -- passando as saídas do registrador para a saída da entidade.
 	 Q2 <= saida_registrador2;
 	 Q1 <= saida_registrador1;
