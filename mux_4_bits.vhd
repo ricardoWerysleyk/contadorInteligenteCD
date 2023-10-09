@@ -10,10 +10,6 @@ end mux_4_bits;
 architecture logica of mux_4_bits is
 
 begin
-   process(E0, E1, set)
    begin
-      if    (set = '0')            then s <= E0;
-      else s <= E1;   
-      end if;   
-   end process;   
+      s <= (E0 and not(set)) or (E1 and set)
 end logica;
